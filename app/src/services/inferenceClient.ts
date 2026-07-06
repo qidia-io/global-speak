@@ -90,6 +90,7 @@ const nllbLanguageCodes: Record<string, string> = {
   'uk': 'ukr_Cyrl',
   'nl': 'nld_Latn',
   'it': 'ita_Latn',
+  'wo': 'wol_Latn',
 };
 
 // Text Translation
@@ -164,7 +165,7 @@ export const textToSpeech = async (
   }
 
   try {
-    const endpoint = config.ttsEndpoint || `https://api-inference.huggingface.co/models/${config.ttsModel}-${targetLang}`;
+    const endpoint = config.ttsEndpoint || `https://api-inference.huggingface.co/models/${config.ttsModel}`;
     
     const response = await fetch(endpoint, {
       method: 'POST',

@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Global Translator',
   webDir: 'dist',
   server: {
-    url: 'https://de6d6f0f-1812-4299-97c7-7cebc13536aa.lovableproject.com?forceHideBadge=true',
+    url: 'http://localhost:5173',
     cleartext: true,
   },
   plugins: {
