@@ -129,12 +129,40 @@ global-speak/
 
 ---
 
+## 📊 Últimas Adiciones (2026-07-06)
+
+| Archivo | Contenido |
+|---|---|
+| `notebooks/sst_finetune_whisper.ipynb` | Fine-tuning Whisper para SST low-resource (9 celdas, PyTorch) |
+| `notebooks/tts_finetune.ipynb` | Fine-tuning TTS (MMS-TTS / XTTS-v2 / F5-TTS) para low-resource |
+| `docs/finetuning-strategy.md` | Estrategia completa de fine-tuning SST+NMT+TTS por lengua |
+
+### Modelos en HuggingFace
+
+| Modelo | Estado | Notas |
+|---|---|---|
+| `sainzpaa/whisper-small-wolof-v1` | ✅ Activo | Whisper fine-tuned Wolof (SST) |
+| `sainzpaa/byt5-nmt-wolof-v1` | ✅ Activo | ByT5 fine-tuned ES↔WO (NMT) |
+| `sainzpaa/SPANISH-WOLOF-BYT5` | ✅ Activo | ByT5 checkpoint alternativo |
+
+### Pendiente (Issues de GitHub)
+
+| # | Título | Estado |
+|---|---|---|
+| 1 | Refinar notebooks ML (NMT/SST/TTS) — limpiar y unificar | ❌ Sin crear (token sin permiso Issues) |
+| 2 | Fine-tuning Whisper para Fula y Bambara | ❌ Pendiente datos |
+| 3 | Fine-tuning TTS para Serer/Jola/Soninké | ❌ Pendiente audios |
+| 4 | Pipeline offline móvil (ONNX/TFLite) | ❌ Pendiente |
+| 5 | Evaluación formal (BLEU, WER, chrF, COMET) | ❌ Pendiente |
+
 ## 🔗 Recursos
 
 | Recurso | URL |
 |---|---|
 | GitHub Repo | `git@github.com:qidia-io/global-speak.git` |
 | ByT5 Wolof | https://huggingface.co/sainzpaa/SPANISH-WOLOF-BYT5 |
+| Whisper Wolof | https://huggingface.co/sainzpaa/whisper-small-wolof-v1 |
+| ByT5 NMT Wolof | https://huggingface.co/sainzpaa/byt5-nmt-wolof-v1 |
 | HF Inference API | https://api-inference.huggingface.co/ |
 | Modelos HF | Whisper Large V3, NLLB-200 distilled 600M, MMS-TTS |
 
