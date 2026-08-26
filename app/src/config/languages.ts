@@ -33,6 +33,7 @@ export const languages: Language[] = [
   { code: 'uk', name: 'Ukrainian', nativeName: 'Українська', flag: '🇺🇦' },
   { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱' },
   { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹' },
+  { code: 'wo', name: 'Wolof', nativeName: 'Wolof', flag: '🇸🇳' },
 ];
 
 export const getLanguageByCode = (code: string): Language | undefined => {

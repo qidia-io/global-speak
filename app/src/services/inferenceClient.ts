@@ -164,7 +164,7 @@ export const textToSpeech = async (
   }
 
   try {
-    const endpoint = config.ttsEndpoint || `https://api-inference.huggingface.co/models/${config.ttsModel}-${targetLang}`;
+    const endpoint = config.ttsEndpoint || `https://api-inference.huggingface.co/models/${config.ttsModel}`;
     
     const response = await fetch(endpoint, {
       method: 'POST',

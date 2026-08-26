@@ -41,9 +41,11 @@ global-speak/
 
 | Agente | Rol | Especialidad |
 |---|---|---|
-| **Tú** (orquestador) | Punto central con el usuario | Coordinación general |
-| **Echo** | Especialista en voz | SST (Whisper), TTS (MMS-TTS), pipeline de audio |
-| *(más pronto)* | | |
+| **Nemrod** 🧠 | Arquitecto del sistema | Diseño, coordinación, documentación, delegación |
+| **Echo** 🎤 | Especialista en voz | SST (Whisper), TTS (MMS-TTS), pipeline SST→NMT→TTS |
+| **Janus** 🔄 | Fine-tuning & notebooks | ByT5, NLLB-200, Whisper, limpieza de notebooks |
+| **Mbok** 🏗️ | App builder | React + Capacitor, frontend, API, pipeline.py |
+| **Sankofa** 📊 | Data curator | Quality gates, ETL, dedup, glossary, limpieza real |
 
 ## Modelos en HuggingFace
 
