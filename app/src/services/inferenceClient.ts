@@ -90,6 +90,7 @@ const nllbLanguageCodes: Record<string, string> = {
   'uk': 'ukr_Cyrl',
   'nl': 'nld_Latn',
   'it': 'ita_Latn',
+  'wo': 'wol_Latn',
 };
 
 // Text Translation

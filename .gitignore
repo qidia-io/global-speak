@@ -141,3 +141,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# ── Data ──────────────────────────────────────────────────
+# Los datos crudos (audios, CSVs grandes) NO van al repo
+data/raw/**/*.wav
+data/raw/**/*.mp3
+data/raw/**/*.flac
+data/raw/**/*.ogg
+*.zip
+!*.ipynb
+
+# Los procesados sí pueden ir (son CSVs ligeros)
+# data/processed/**/*
