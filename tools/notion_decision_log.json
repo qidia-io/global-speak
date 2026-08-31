@@ -1,0 +1,19 @@
+{
+  "parent": {"page_id": "3cda97bd797c80ccb06ce6b3ade351e6"},
+  "properties": {"title": {"title": [{"text": {"content": "DECISION LOG"}}]}},
+  "children": [
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-26 — Diseno walkie-talkie"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: sistema pulsar-hablar-soltar como diseno del producto. PRD lo escribira Griot."}}]}},
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-27 — DeepSeek API como cerebro"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: Hermes local + DeepSeek API (no Ollama). Triniti sigue como servidor principal 24/7."}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Razon: sin GPU local; DeepSeek ~0,27 USD/M tokens, ~1 centimo por conversacion."}}]}},
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-27 — Bruce, asistente personal"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: bot tio_bruce_bot como asistente personal para controlar TODOS los proyectos (no tematico de lenguas). Conectado al Hermes del portatil via gateway Telegram."}}]}},
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-27 — Seguimiento externo"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: GitHub Issues = tablero operativo (21 issues con labels). Notion = cuartel general (BD Tareas + ROADMAP + DECISION LOG). Bruce = secretario personal."}}]}},
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-27 — Tailscale oficial (no snap)"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: reemplazar la snap de Tailscale por la version oficial en el HP. Causa raiz: bug de la snap (PollNetMap 404, nodo offline pese a aparecer conectado)."}}]}},
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "2026-08-31 — Documentacion integral"}}]}},
+    {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content": "Decision: PROJECT_CONTROL.md como documento maestro de control global (vision 360, cronologia, fases, equipo, decisiones, infra, pendientes). No solo el SST."}}]}}
+  ]
+}
