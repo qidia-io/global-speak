@@ -23,7 +23,14 @@
 
 ## Estado del Proyecto
 
-📊 **[Ver STATUS.md →](STATUS.md)** — trazabilidad completa de lo completado, en progreso y pendiente.
+| Documento | Qué contiene |
+|---|---|
+| 🎯 **[PROJECT_CONTROL.md](PROJECT_CONTROL.md)** | **Documento maestro** — visión 360°, cronología, fases, equipo, decisiones, infraestructura, pendientes |
+| 📊 **[STATUS.md](STATUS.md)** | Estado actual verificado — completado, en progreso, backlog |
+| 🗺️ **[ROADMAP.md](ROADMAP.md)** | Milestones técnicos con dependencias |
+| 🗓️ **[GANTT.md](GANTT.md)** | Diagrama temporal por fases (Mermaid) |
+
+**Seguimiento externo:** [GitHub Issues](https://github.com/qidia-io/global-speak/issues) (tablero operativo, 21 tareas etiquetadas) · [Notion](https://app.notion.com/p/Nemrod-global-speak-3cda97bd797c80ccb06ce6b3ade351e6) (cuartel general: BD Tareas + ROADMAP + DECISION LOG) · Bruce (`@tio_bruce_bot`)
 
 ---
 
