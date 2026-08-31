@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Mic, Square, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useCanHover } from '@/hooks/use-can-hover';
 
 interface RecordButtonProps {
   isRecording: boolean;
@@ -42,15 +43,17 @@ export function RecordButton({
       onStart();
     }
   };
+  const reduceMotion = useReducedMotion();
+  const canHover = useCanHover();
 
   return (
     <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.05 }}
-      whileTap={{ scale: disabled ? 1 : 0.95 }}
+      whileHover={disabled || !canHover || reduceMotion ? undefined : { scale: 1.05 }}
+      whileTap={disabled || reduceMotion ? undefined : { scale: 0.95 }}
       onClick={handleClick}
       disabled={disabled || isProcessing}
       className={cn(
-        "relative rounded-full flex items-center justify-center transition-all",
+        "relative rounded-full flex items-center justify-center transition-transform duration-150 ease-out-expo",
         sizeClasses[size],
         isRecording
           ? "bg-destructive text-destructive-foreground"

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -10,11 +10,13 @@ interface FeatureBlockProps {
 }
 
 export function FeatureBlock({ icon: Icon, title, description, delay = 0 }: FeatureBlockProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay }}
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay, ease: [0.23, 1, 0.32, 1] }}
       className="text-center"
     >
       <div className={cn(

@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useCanHover } from '@/hooks/use-can-hover';
 
 interface ModeCardProps {
   icon: LucideIcon;
@@ -20,15 +21,17 @@ export function ModeCard({
   className,
 }: ModeCardProps) {
   const isPrimary = variant === 'primary';
+  const reduceMotion = useReducedMotion();
+  const canHover = useCanHover();
 
   return (
     <motion.button
-      whileHover={{ scale: 1.02, y: -2 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={canHover && !reduceMotion ? { scale: 1.02, y: -2 } : undefined}
+      whileTap={!reduceMotion ? { scale: 0.98 } : undefined}
       onClick={onClick}
       className={cn(
         "relative overflow-hidden rounded-2xl p-6 text-left w-full",
-        "transition-all duration-300",
+        "transition-[transform,box-shadow] duration-200 ease-out-expo",
         isPrimary
           ? "bg-gradient-voice text-white shadow-button-primary"
           : "bg-card border border-border text-foreground shadow-card hover:shadow-card-hover",

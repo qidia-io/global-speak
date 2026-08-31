@@ -173,11 +173,11 @@ Toda revisión de UI usa la tabla **| Before | After | Why |** (una fila por iss
 
 ## 9. Estado de adopción
 
-- [ ] **SW.3.4 (#170)** — tokens de movimiento en Tailwind (sección 2)
-- [ ] **SW.3.4 (#170)** — anti-patrones eliminados de componentes custom (checklist sección 6)
-- [ ] **SW.3.4 (#170)** — press feedback universal en elementos interactivos
-- [ ] **SW.3.4 (#170)** — reduced-motion respetado en toda la app
-- [ ] **SW.3.4 (#170)** — Sonner configurado a medida (posición, tema, timing)
-- [ ] **SW.3.4 (#170)** — review completo de componentes custom con formato Before/After/Why
+- [x] **SW.3.4 (#170)** — tokens de movimiento en Tailwind (sección 2) — `ease-out-expo`, `ease-in-out-expo`, `ease-drawer` en `tailwind.config.ts` (31-ago-2026, mbok)
+- [x] **SW.3.4 (#170)** — anti-patrones eliminados de componentes custom (checklist sección 6) — 8/9 componentes corregidos; sin `transition-all`, sin `ease-in`, sin `scale(0)` (31-ago-2026, mbok + review Nemrod)
+- [x] **SW.3.4 (#170)** — press feedback universal en elementos interactivos — `active:scale-95` + `transition-[transform,...] duration-150` (31-ago-2026)
+- [x] **SW.3.4 (#170)** — reduced-motion respetado en toda la app — `useReducedMotion()` en 6 componentes (31-ago-2026)
+- [ ] **SW.3.4 (#170)** — Sonner configurado a medida (posición, tema, timing) — pendiente
+- [x] **SW.3.4 (#170)** — review completo de componentes custom con formato Before/After/Why — Approve (31-ago-2026, Nemrod)
 
 *Actualizado: 31-ago-2026 · Nemrod (arquitectura) · fuente: skill `emil-design` (MIT) + Apple HIG*

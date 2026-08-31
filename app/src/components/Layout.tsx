@@ -34,7 +34,7 @@ export function Layout({ children }: LayoutProps) {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-colors",
+                  "flex flex-col items-center gap-1 px-4 py-2 rounded-xl active:scale-95 transition-[transform,color] duration-150",
                   isActive
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"

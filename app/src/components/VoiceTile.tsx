@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Mic, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getLanguageByCode } from '@/config/languages';
+import { useCanHover } from '@/hooks/use-can-hover';
 
 interface VoiceTileProps {
   langCode: string;
@@ -22,15 +23,17 @@ export function VoiceTile({
 }: VoiceTileProps) {
   const lang = getLanguageByCode(langCode);
   const isFrom = variant === 'from';
+  const reduceMotion = useReducedMotion();
+  const canHover = useCanHover();
 
   return (
     <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.02 }}
-      whileTap={{ scale: disabled ? 1 : 0.98 }}
+      whileHover={disabled || !canHover || reduceMotion ? undefined : { scale: 1.02 }}
+      whileTap={disabled || reduceMotion ? undefined : { scale: 0.98 }}
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "relative overflow-hidden rounded-2xl p-5 w-full text-left transition-all",
+        "relative overflow-hidden rounded-2xl p-5 w-full text-left transition-transform duration-200 ease-out-expo",
         "flex flex-col items-center justify-center min-h-[140px]",
         isFrom
           ? "bg-gradient-voice text-white"

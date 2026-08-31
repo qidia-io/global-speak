@@ -141,6 +141,12 @@ export default {
         'button': '0 2px 8px -2px rgb(0 0 0 / 0.1)',
         'button-primary': '0 4px 14px -3px hsl(217 91% 60% / 0.4)',
       },
+      transitionTimingFunction: {
+        /* Tokens de movimiento (DESIGN_GUIDE §2 — doctrina emil-design) */
+        'out-expo': 'cubic-bezier(0.23, 1, 0.32, 1)',       /* ease-out custom */
+        'in-out-expo': 'cubic-bezier(0.77, 0, 0.175, 1)',   /* ease-in-out custom */
+        'drawer': 'cubic-bezier(0.32, 0.72, 0, 1)',         /* iOS-like (Ionic) */
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

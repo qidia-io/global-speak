@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Globe, Mic, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -7,6 +7,8 @@ interface HeroBannerProps {
 }
 
 export function HeroBanner({ className }: HeroBannerProps) {
+  const reduceMotion = useReducedMotion();
+
   const features = [
     {
       icon: Globe,
@@ -27,9 +29,9 @@ export function HeroBanner({ className }: HeroBannerProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
       className={cn(
         "relative overflow-hidden rounded-2xl bg-gradient-hero p-6 text-white",
         className
@@ -50,9 +52,9 @@ export function HeroBanner({ className }: HeroBannerProps) {
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + index * 0.1 }}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
+              animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + index * 0.08, duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
               className="text-center"
             >
               <div className="w-10 h-10 mx-auto mb-2 rounded-xl bg-white/20 flex items-center justify-center">

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Clock, Play, Copy, Trash2, Volume2 } from 'lucide-react';
 import { HistoryItem, formatTimestamp } from '@/services/storage';
 import { getLanguageByCode, isRTL } from '@/config/languages';
@@ -21,6 +21,8 @@ export function HistoryPanel({
   isPlaying,
   className,
 }: HistoryPanelProps) {
+  const reduceMotion = useReducedMotion();
+
   if (items.length === 0) {
     return (
       <div className={cn("bg-card rounded-2xl border border-border p-6", className)}>
@@ -62,10 +64,17 @@ export function HistoryPanel({
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ delay: index * 0.05 }}
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -20 }}
+                animate={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 1, x: 0, transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 } }
+                }
+                exit={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, x: 20, transition: { duration: 0.15, ease: [0.23, 1, 0.32, 1] } }
+                }
                 className="p-4 border-b border-border last:border-b-0 hover:bg-secondary/30 transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -80,7 +89,7 @@ export function HistoryPanel({
                       <button
                         onClick={() => onPlay(item)}
                         className={cn(
-                          "p-1.5 rounded-lg hover:bg-secondary transition-colors",
+                          "p-1.5 rounded-lg hover:bg-secondary active:scale-95 transition-[transform,background-color] duration-150",
                           isPlaying === item.id && "text-primary animate-pulse"
                         )}
                         aria-label="Play audio"
@@ -95,7 +104,7 @@ export function HistoryPanel({
                     {onCopy && (
                       <button
                         onClick={() => onCopy(item)}
-                        className="p-1.5 rounded-lg hover:bg-secondary transition-colors"
+                        className="p-1.5 rounded-lg hover:bg-secondary active:scale-95 transition-[transform,background-color] duration-150"
                         aria-label="Copy translation"
                       >
                         <Copy className="w-4 h-4" />
@@ -104,7 +113,7 @@ export function HistoryPanel({
                     {onDelete && (
                       <button
                         onClick={() => onDelete(item)}
-                        className="p-1.5 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors"
+                        className="p-1.5 rounded-lg hover:bg-destructive/10 hover:text-destructive active:scale-95 transition-[transform,background-color,color] duration-150"
                         aria-label="Delete"
                       >
                         <Trash2 className="w-4 h-4" />

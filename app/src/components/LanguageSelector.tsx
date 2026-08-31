@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Search, ArrowLeftRight } from 'lucide-react';
 import { languages, Language, getLanguageByCode } from '@/config/languages';
 import { cn } from '@/lib/utils';
@@ -19,6 +19,7 @@ export function LanguageSelector({
 }: LanguageSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const reduceMotion = useReducedMotion();
 
   const selectedLanguage = getLanguageByCode(value);
 
@@ -53,7 +54,7 @@ export function LanguageSelector({
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           "flex items-center gap-2 px-4 py-3 rounded-xl bg-card border border-border",
-          "hover:bg-secondary/50 transition-colors w-full min-w-[140px]",
+          "hover:bg-secondary/50 active:scale-95 transition-[transform,background-color] duration-150 ease-out-expo w-full min-w-[140px]",
           "focus:outline-none focus:ring-2 focus:ring-primary/20"
         )}
       >
@@ -80,12 +81,19 @@ export function LanguageSelector({
               }} 
             />
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              transition={{ duration: 0.15 }}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10, scale: 0.95 }}
+              animate={
+                reduceMotion
+                  ? { opacity: 1 }
+                  : { opacity: 1, y: 0, scale: 1, transition: { duration: 0.15, ease: [0.23, 1, 0.32, 1] } }
+              }
+              exit={
+                reduceMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: -10, scale: 0.95, transition: { duration: 0.1 } }
+              }
               className={cn(
-                "absolute top-full left-0 right-0 mt-2 z-50",
+                "absolute top-full left-0 right-0 mt-2 z-50 origin-top",
                 "bg-card border border-border rounded-xl shadow-lg overflow-hidden"
               )}
             >
@@ -119,7 +127,7 @@ export function LanguageSelector({
                       onClick={() => handleSelect(lang)}
                       className={cn(
                         "w-full flex items-center gap-3 px-4 py-3 text-left",
-                        "hover:bg-secondary/50 transition-colors",
+                        "hover:bg-secondary/50 active:bg-secondary active:scale-95 transition-[transform,background-color] duration-150 ease-out-expo",
                         value === lang.code && "bg-primary/10"
                       )}
                     >
@@ -187,7 +195,7 @@ export function LanguagePairSelector({
         onClick={handleSwap}
         className={cn(
           "flex-shrink-0 p-3 rounded-xl bg-card border border-border",
-          "hover:bg-secondary/50 transition-colors",
+          "hover:bg-secondary/50 active:scale-95 transition-[transform,background-color] duration-150",
           "focus:outline-none focus:ring-2 focus:ring-primary/20"
         )}
         aria-label="Swap languages"
