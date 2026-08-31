@@ -1,5 +1,6 @@
 // Hugging Face Inference Client with Mock Mode support
 // Uses .env variables or falls back to mock mode
+import { getRoute } from '../config/modelRouter';
 
 interface InferenceConfig {
   hfToken: string | null;
@@ -91,6 +92,8 @@ const nllbLanguageCodes: Record<string, string> = {
   'nl': 'nld_Latn',
   'it': 'ita_Latn',
   'wo': 'wol_Latn',
+  'bm': 'bam_Latn',
+  'ff': 'ful_Latn',
 };
 
 // Text Translation
@@ -108,10 +111,19 @@ export const translateText = async (
   }
 
   try {
-    const endpoint = config.nmtEndpoint || `https://api-inference.huggingface.co/models/${config.nmtModel}`;
-    
-    const srcCode = nllbLanguageCodes[sourceLang] || 'eng_Latn';
-    const tgtCode = nllbLanguageCodes[targetLang] || 'eng_Latn';
+    const route = getRoute(sourceLang, targetLang);
+    const endpoint = config.nmtEndpoint || `https://api-inference.huggingface.co/models/${route.model}`;
+
+    const payload =
+      route.type === 'byt5'
+        ? { inputs: text }
+        : {
+            inputs: text,
+            parameters: {
+              src_lang: nllbLanguageCodes[sourceLang] || sourceLang,
+              tgt_lang: nllbLanguageCodes[targetLang] || targetLang,
+            },
+          };
 
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -119,13 +131,7 @@ export const translateText = async (
         'Authorization': `Bearer ${config.hfToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        inputs: text,
-        parameters: {
-          src_lang: srcCode,
-          tgt_lang: tgtCode,
-        },
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
